@@ -1,0 +1,26 @@
+<div class="info-container">
+    <form (ngSubmit)="onSubmit()" [formGroup]="infoForm">
+        <label for="name">Full Name</label><br/>
+        <input type="text" id="name" formControlName="name" [(ngModel)]="name" placeholder="(minimum 3 characters)">
+        <br/>
+        <label for="address">Address</label><br/>
+        <input type="text" id="address" formControlName="address" [(ngModel)]="address" placeholder="(minimum 6 characters)">
+        <br/>
+        <label for="creditCard">Credit card number</label><br/>
+        <input type="text" id="creditCard" formControlName="creditCard" [(ngModel)]="creditCard" placeholder="(16-digit number)">
+        <br/>
+        <span class="message">We'll never share your payment details with anyone else.</span>
+        <br/>
+        <button class="btn" type="submit">Submit</button>
+    </form>
+    
+    <div class="error-message" *ngIf="formName?.dirty && (formName?.errors?.['required'] || formName?.errors?.['minlength'])">
+        Please enter a valid name (minimum 3 characters)
+    </div>
+    <div class="error-message" *ngIf="formAddress?.dirty && (formAddress?.errors?.['required'] || formAddress?.errors?.['minlength'])">
+        Please enter a valid address (minimum 6 characters)
+    </div>
+    <div class="error-message" *ngIf="formCard?.dirty && (formCard?.errors?.['required'] || formCard?.errors?.['minlength'])">
+        Please enter a valid credit card number (16-digit number)
+    </div>
+</div>

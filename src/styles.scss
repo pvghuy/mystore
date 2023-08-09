@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.product-image {      
+    list-style-type: none;
+    width: 290px;
+    padding: 20px;
+    margin: 6px 6px;        
+    border: 1px solid #33B5E5;
+    border-radius: 5px;
+} 
+
+.selection {
+    padding: 5px 30px;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-weight: bolder;
+}
+
+.btn {
+    padding: 5px 10px;
+    background: #33B5E5;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    border-color: #33B5E5;
+    &:hover {
+        cursor: pointer;
+    }
+}

@@ -1,0 +1,19 @@
+<div class="confirmation-container">
+    <div class="confirmation-items">
+        <div class="confirmation-header">
+            Success! <fa-icon [icon]="faTruck"></fa-icon>
+        </div>
+        <div class="confirmation-item">
+            Thank you, <b>{{ name }}!</b>
+        </div>
+        <div class="confirmation-item">
+            Your <b>${{ total }}</b> order is confirmed!
+        </div>
+        <div class="confirmation-item">
+            Please allow 1-3 business day(s) for shipping.
+        </div>
+        <div class="confirmation-item">
+            <a class="btn" routerLink="/">Back to product list</a>
+        </div>
+    </div>
+</div>

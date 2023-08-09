@@ -1,0 +1,13 @@
+<div class="product-container">
+    <a routerLink="/product/{{ product.id }}">
+        <img class="product-image" alt="Product image" src="{{ product.url }}">
+    </a>
+    <h2>{{ product.name }}</h2>
+    <div class="select-input">
+        <p class="price">${{ product.price }}</p>
+        <select class="selection" name="amount" (change)="setAmount($event)">
+            <option *ngFor="let sel of selection" value="{{ sel }}">{{ sel }}</option>
+        </select>
+        <button class="btn" (click)="addProductToCart()">Add to cart</button>
+    </div>
+</div>

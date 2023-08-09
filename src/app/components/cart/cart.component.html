@@ -1,0 +1,30 @@
+<div *ngIf="products.length > 0; else empty" class="cart-container">
+    <div class="cart-article">
+        <div *ngFor="let product of products" class="cart-item">
+            <img src="{{ product.url }}" />
+            <div class="product-brief">
+                <div class="cart-item-details cart-item-details__name">{{ product.name }}</div>
+                <div class="cart-item-details cart-item-details__price">${{ product.price }}</div>
+                <div class="cart-item-details cart-item-details__amount">Amount: 
+                    <select class="selection" (change)="changeAmount($event, product)">
+                        <option
+                            *ngFor="let sel of selection"
+                            [selected]="product.amount === sel"
+                        >
+                        {{ sel }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="total">
+            <b>Total: ${{ total }}</b>
+        </div>
+    </div>
+    <div class="info-article">
+        <app-customer-info (customerInfo)="onSubmit($event)"></app-customer-info>
+    </div>
+</div>
+<ng-template #empty>
+    <div class="empty-cart-message">Your cart is empty!</div>
+</ng-template>

@@ -1,0 +1,17 @@
+<div class="detail-container">
+    <div id="detail-item">
+        <img class="product-image" src="{{ product.url }}">
+    </div>
+    <div class="product-details-info">
+        <h2> {{ product.name }}</h2>
+        <p class="product-description">{{ product.description }}</p>
+        <p class="price">${{ product.price }}</p>
+        <div class="action-container">
+            <select class="selection" name="amount" (change)="setAmount($event)">
+                <option *ngFor="let sel of selection" value="{{ sel }}">{{ sel }}</option>
+            </select>
+            <button class="btn" (click)="addProductToCart()">Add to cart</button>
+            <a class="back-button" routerLink="/"><fa-icon [icon]="backArrow"></fa-icon> Back to product list</a>
+        </div>
+    </div>
+</div>

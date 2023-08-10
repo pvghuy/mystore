@@ -11,6 +11,11 @@
       }
       .btn {
         margin: 15px 0;
+        &:disabled {
+          background: #555;
+          cursor: unset;
+          border-color: #555;
+        }
       }
       .error-message {
         color: rgba($color: red, $alpha: .7);

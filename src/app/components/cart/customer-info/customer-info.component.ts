@@ -12,6 +12,7 @@ export class CustomerInfoComponent implements OnInit {
   name: string = '';
   address: string = '';
   creditCard: string = '';
+  isValid = false;
 
   constructor (private formBuilder: FormBuilder) {
 
@@ -21,8 +22,17 @@ export class CustomerInfoComponent implements OnInit {
     this.infoForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       address: ['', [Validators.required, Validators.minLength(6)]],
-      creditCard: ['', [Validators.required, Validators.minLength(16)]]
+      creditCard: ['', [Validators.required]]
     })
+  }
+
+  insertCard(card: any) {
+    if (JSON.stringify(card).length === 16) {
+      this.creditCard = card;
+      this.isValid = true;
+    } else {
+      this.isValid = false;
+    }
   }
 
   get formName() {

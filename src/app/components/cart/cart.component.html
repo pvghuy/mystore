@@ -10,6 +10,9 @@
                         <option *ngFor="let sel of selection" value="{{ sel }}">{{ sel }}</option>
                     </select>
                 </div>
+                <div class="cart-item-details">
+                    <button class="btn" (click)="deleteProduct(product.name, product.id)">Remove from cart</button>
+                </div>
             </div>
         </div>
         <div class="total">

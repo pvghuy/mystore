@@ -36,7 +36,7 @@ export class ProductItemComponent {
     alert(message);
   }
 
-  setAmount(value: any) {
-    this.product.amount = value;
+  setAmount(value: number) {
+    this.product.amount = Number(value);
   }
 }

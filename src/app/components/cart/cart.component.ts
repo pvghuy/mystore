@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/services/cart.service';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-cart',
@@ -14,7 +15,7 @@ export class CartComponent implements OnInit {
   selection: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   total: number = 0;
 
-  constructor(private cartService: CartService, private route: Router) {}
+  constructor(private cartService: CartService, private route: Router, private productService: ProductService) {}
 
   ngOnInit() {
     this.products = this.cartService.getCart();
@@ -24,7 +25,7 @@ export class CartComponent implements OnInit {
   calculateTotal() {
     this.total = 0;
     this.products.forEach(product => {
-      this.total = Number((this.total + product.price * product.amount).toFixed(2));
+      this.total = Number((this.total + product.price * Number(product.amount)).toFixed(2));
     })
   }
 
@@ -32,6 +33,14 @@ export class CartComponent implements OnInit {
     const position = this.products.indexOf(product);
     this.products[position].amount = value;
     this.calculateTotal();
+  }
+
+  deleteProduct(name: string, id: number) {
+    this.products = this.products.filter(product => product.id !== id);
+    this.cartService.clearCart();
+    this.productService.addProductToStorage(this.products);
+    const message = `You have removed ${name} from your cart`;
+    alert(message);
   }
 
   onSubmit(value: any) {

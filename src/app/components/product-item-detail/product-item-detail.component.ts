@@ -45,7 +45,7 @@ export class ProductItemDetailComponent implements OnInit {
     alert(message);
   }
 
-  setAmount(value: any) {
-    this.product.amount = value;
+  setAmount(value: number) {
+    this.product.amount = Number(value);
   }
 }

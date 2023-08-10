@@ -19,7 +19,6 @@ export class CartComponent implements OnInit {
   ngOnInit() {
     this.products = this.cartService.getCart();
     this.calculateTotal();
-    
   }
 
   calculateTotal() {
@@ -29,9 +28,9 @@ export class CartComponent implements OnInit {
     })
   }
 
-  changeAmount(e: Event, product: Product) {
+  changeAmount(value: any, product: Product) {
     const position = this.products.indexOf(product);
-    this.products[position].amount = parseInt((e.target as HTMLSelectElement).value);
+    this.products[position].amount = value;
     this.calculateTotal();
   }
 

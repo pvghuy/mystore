@@ -6,13 +6,8 @@
                 <div class="cart-item-details cart-item-details__name">{{ product.name }}</div>
                 <div class="cart-item-details cart-item-details__price">${{ product.price }}</div>
                 <div class="cart-item-details cart-item-details__amount">Amount: 
-                    <select class="selection" (change)="changeAmount($event, product)">
-                        <option
-                            *ngFor="let sel of selection"
-                            [selected]="product.amount === sel"
-                        >
-                        {{ sel }}
-                        </option>
+                    <select class="selection" [ngModel]="product.amount || 1" (ngModelChange)="changeAmount($event, product)">
+                        <option *ngFor="let sel of selection" value="{{ sel }}">{{ sel }}</option>
                     </select>
                 </div>
             </div>

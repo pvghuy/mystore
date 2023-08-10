@@ -45,7 +45,7 @@ export class ProductItemDetailComponent implements OnInit {
     alert(message);
   }
 
-  setAmount(e: Event) {
-    this.product.amount = parseInt((e.target as HTMLSelectElement).value);
+  setAmount(value: any) {
+    this.product.amount = value;
   }
 }

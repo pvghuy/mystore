@@ -24,8 +24,8 @@ export class CartComponent implements OnInit {
 
   calculateTotal() {
     this.total = this.products.reduce((acc: number, product: Product) => {
-      this.total = parseFloat((acc + Number(product.price) * Number(product.amount)).toFixed(2));
-      return this.total;
+      this.total = (acc + +product.price * +product.amount);
+      return Math.round(this.total);
     }, 0);
   }
 

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/models/product';
 import { CartService } from 'src/app/services/cart.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -8,7 +8,7 @@ import { ProductService } from 'src/app/services/product.service';
   templateUrl: './product-item.component.html',
   styleUrls: ['./product-item.component.scss']
 })
-export class ProductItemComponent {
+export class ProductItemComponent implements OnInit {
   @Input() product: Product = {
     id: 0,
     name: '',
@@ -20,6 +20,10 @@ export class ProductItemComponent {
   selection: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   constructor(private productService: ProductService, private cartService: CartService) {}
+
+  ngOnInit() {
+    this.product.amount = 1;
+  }
 
   addProductToCart() {
     const cartProducts: Product[] = this.cartService.getCart();

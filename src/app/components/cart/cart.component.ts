@@ -23,10 +23,10 @@ export class CartComponent implements OnInit {
   }
 
   calculateTotal() {
-    this.total = 0;
-    this.products.forEach(product => {
-      this.total = parseFloat((+this.total + +product.price * +product.amount).toFixed(2));
-    })
+    this.total = this.products.reduce((acc: number, product: Product) => {
+      this.total = parseFloat((acc + Number(product.price) * Number(product.amount)).toFixed(2));
+      return this.total;
+    }, 0);
   }
 
   changeAmount(value: any, product: Product) {
